@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Moon</title>
+</head>
+<body>
+    <style>
+    body, html {
+        user-select: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+}
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 100px;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+}
+.loading-image {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+}
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+}
+footer p {
+    position: absolute;
+    bottom: 20px;
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite ease-in-out;
+    box-shadow: 0 0 6px white;
+}
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+</style>
+    <div id="loading-screen">
+        <img src="/home/aminedachir/Documents/themoon/src/img/img.jpeg" alt="Loading" class="loading-image">
+        <p>Do you want to see the moon ?</p>
+    </div>
+    <header>
+        <h1>You are the moon ❤️🤍</h1>
+    </header>
+    <footer>
+        <p>Powered by AMINE :)</p>
+    </footer>
+<script>
+    const starCount = 200;
+    const body = document.body;
+function createStar() {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+
+    star.style.left = `${x}px`;
+    star.style.top = `${y}px`;
+
+    const size = Math.random() * 5 + 1;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    
+    const delay = Math.random() * 5;
+    star.style.animationDelay = `${delay}s`;
+    
+    body.appendChild(star);
+}
+
+for (let i = 0; i < starCount; i++) {
+    createStar();
+}
+  </script>
+    <script>
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => loadingScreen.style.display = 'none', 500);
+        }, 3800);
+    </script>
+</body>
+</html>
